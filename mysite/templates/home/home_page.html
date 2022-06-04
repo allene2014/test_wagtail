@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+
+
+{% block content %}
+<!--{%image self.banner_image fill-600x300 as img %}-->
+<div class="jumbotron">
+    <h1 class="display-4">{{self.banner_title}}</h1>
+    <div class="lead">{{self.banner_subtitle|richtext}}</div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+     
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="region-oriente/">Oriente <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="centro/">Centro</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="occidente/">Occidente</a>
+          </li>
+        </ul>
+        <form method="get">
+            <div id="custom-search-input">
+                <div class="input-group col-md-12">
+                    <input type="text" class="form-control" placeholder="buscar" name="buscar">
+                    <button type="submit" class="btn btn-success">Buscar</button>
+                    <!--a class="btn btn-primary btn-lg" href="#" role="button">search</a-->
+                </div>
+            </div>
+            
+        </form>
+    </nav>
+    
+</div>
+
+<div class="jumbotron">
+    {% for post in page.get_children %}
+        <h2><a href="{% pageurl post %}">{{ post.title }}</a></h2>
+        {{ post.specific.intro }}
+        {{ post.specific.body|richtext }}
+    {% endfor %}
+{% endblock %}
+</div>
+
+

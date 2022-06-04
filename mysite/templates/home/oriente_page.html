@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags %}
+
+{% block body_class %}template-blogpage{% endblock %}
+
+{% block content %}
+
+    <h1>{{ page.title }}</h1>
+    <div class="jumbotron">
+      <h1 class="display-4">En el oriente del país</h1>
+      <p class="lead"> se encuentran algunas de las mejores playas de Venezuela. Bahías de arena fina y cocoteros bellísimos, esto lo hacen una zona privilegiada</p>
+      <hr class="my-4">
+      <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+      <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+    </div>
+    <p>{{self.nombre_playa}}</p>
+
+    <div class="intro">{{ page.intro }}</div>
+
+    {{ page.body|richtext }}
+
+    <p><a href="{{ page.get_parent.url }}">Return to blog</a></p>
+    
+
+{% endblock %}
