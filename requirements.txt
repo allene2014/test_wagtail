@@ -1,2 +1,5 @@
 Django>=4.0,<4.1
 wagtail>=3.0,<3.1
+
+
+#images tomadas de <a href='https://www.freepik.es/fotos/playa-tropical'>Foto de playa tropical creado por lifeforstock - www.freepik.es</a>

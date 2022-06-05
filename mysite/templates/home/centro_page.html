@@ -1,32 +1,41 @@
 {% extends "base.html" %}
 {% load wagtailcore_tags wagtailimages_tags %}
 
+
 {% load wagtailcore_tags %}
 
 {% block body_class %}template-blogpage{% endblock %}
 
 {% block content %}
+{%image self.centro_image fill-600x300 as img %}
   
     <h1>{{ page.title }}</h1>
 
-    <div class="jumbotron">
-      <h1 class="display-4">Playas Región Central</h1>
-      <p class="lead"> Esta lleno de playas hermosas. Los vientos alisios del norte, la ausencia de montañas cercanas al mar y la arena fina</p>
-      <hr class="my-4">
-      <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-      <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+            <div class="jumbotron">
+              <h1 class="display-4">Venezuela tuya</h1>
+              <div class="card" style="width: 65rem;">
+                <img src="{{img.url}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  
+                </div>
+              </div>
+              <p class="lead"> El Centro del pais Esta lleno de playas hermosas. Los vientos alisios del norte, la ausencia de montañas cercanas al mar y la arena fina</p>
+              <hr class="my-4">
+              <p>En el centro del país se encuentran muchísimas y excelentes playas, que conforman un variado muestrario de nuestra bella geografía. La isla Tortuga, ubicada a 72 kilómetros al noreste de Cabo Codera. Esta es la segunda isla más extensa de Venezuela y posee unas playas de película, como punta delgada de arenas blanquísimas y agua transparentes.
+              El litoral Barloventeño, que tiene 93 kilómetros de costas: Los canales de Río Chico, poblados de condominios y clubes. Playas como Higuerote, ancha y segura. Carenero, reino de marinas y esquiadores. Buche y buchito, ideales para alquiler de lanchas. Puerto francés, con su playa de aguas serenas. El farallón centinela, observatorio de tiburones y barracudas, caracolito, los corrales y el caimán, de arenas suave e ideales para el buceo. Chirimena, chirere y el banquito, con sus aguas azulísimas y arenas fina, las dos últimas refugio de tortugas y de surfistas. Para terminar este tramo debemos acotar que la playa caribe es bellísima, y se llega por lancha desde chuspa</p>
+              <a class="btn btn-primary btn-lg" href="{{ page.get_parent.url }}" role="button">Home</a>
+            </div>
+        </div>
+       
+      </div>
     </div>
-    <p class="meta">{{ page.nombre_playa }}</p>
 
-    <div class="intro">{{ page.intro }}</div>
-    <p class="meta">{{ page.nombre_playa }}</p>
-
-    <div class="intro">{{ page.intro }}</div>
 
     {{ page.body|richtext }}
 
 
-    <p><a href="{{ page.get_parent.url }}">Return to blog</a></p>
-    
 
 {% endblock %}

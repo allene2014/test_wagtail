@@ -1,25 +1,39 @@
 {% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
 
-{% load wagtailcore_tags %}
 
 {% block body_class %}template-blogpage{% endblock %}
 
 {% block content %}
+{%image self.occidente_image fill-600x300 as img %}
     <h1>{{ page.title }}</h1>
-    <div class="jumbotron">
-      <h1 class="display-4">Playas de Occidente</h1>
-      <p class="lead"> Esta lleno de playas hermosas. Los vientos alisios del norte, la ausencia de montañas cercanas al mar y la arena fina</p>
-      <hr class="my-4">
-      <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-      <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-    </div>
-    <p class="meta">{{ page.nombre_playa }}</p>
 
-    <div class="intro">{{ page.intro }}</div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+            <div class="jumbotron">
+              <h1 class="display-4">Venezuela tuya</h1>
+              <div class="card" style="width: 65rem;">
+                <img src="{{img.url}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  
+                </div>
+              </div>
+              <p class="lead"> El Occidente Esta lleno de playas hermosas. Los vientos alisios del norte, la ausencia de montañas cercanas al mar y la arena fina</p>
+              <hr class="my-4">
+              <p>Esta lleno de playas hermosas. Los vientos alisios del norte, la ausencia de montañas cercanas al mar y la arena fina, hacen que las playas de occidentes sean muy diferentes al resto del país, y que parezcan infinitas.
+
+              Comenzaremos nuestro recorrido por Tucaras, playa adorada por los valencianos y barquisimetanos, porque aquí comienza el Parque Nacional Morrocoy. Las hileras de cocoteros que uno observa desde la carretera a partir de El Palito, son únicas en Venezuela. Alegría irresistible sentirá en cada una de las marinas y embarcaderos, donde se toman los botes para visitar las isla del parque. En los manglares cercanos abundan los flamencos y las garzas, sobre todo temprano en las mañanas. </p>
+              <a class="btn btn-primary btn-lg" href="{{ page.get_parent.url }}" role="button">Home</a>
+            </div>
+        </div>
+       
+      </div>
+    </div>
+
+   
 
     {{ page.body|richtext }}
 
-    <p><a href="{{ page.get_parent.url }}">Return to blog</a></p>
-    
-
+   
 {% endblock %}
