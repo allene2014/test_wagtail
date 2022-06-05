@@ -4,8 +4,8 @@
 
 
 {% block content %}
-<!--{%image self.banner_image fill-600x300 as img %}-->
-<div class="jumbotron">
+{%image self.blog_image fill-600x300 as img %}
+<div class="jumbotron" style="background-image: url({{img.url}}); background-size: cover;">
     <h1 class="display-4">{{self.banner_title}}</h1>
     <div class="lead">{{self.banner_subtitle|richtext}}</div>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -14,13 +14,13 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="region-oriente/">Oriente <span class="sr-only">(current)</span></a>
+            <a class="badge badge-info" href="region-oriente/">Oriente <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="centro/">Centro</a>
+            <a class="badge badge-info" href="centro/">Centro</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="occidente/">Occidente</a>
+            <a class="badge badge-info" href="occidente/">Occidente</a>
           </li>
         </ul>
         <form method="get">
@@ -38,6 +38,7 @@
 </div>
 
 <div class="jumbotron">
+    
     {% for post in page.get_children %}
         <h2><a href="{% pageurl post %}">{{ post.title }}</a></h2>
         {{ post.specific.intro }}

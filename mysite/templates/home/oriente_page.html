@@ -1,26 +1,35 @@
 {% extends "base.html" %}
-
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags wagtailimages_tags %}
 
 {% block body_class %}template-blogpage{% endblock %}
 
 {% block content %}
-
+{%image self.oriente_image fill-600x300 as img %}
     <h1>{{ page.title }}</h1>
-    <div class="jumbotron">
-      <h1 class="display-4">En el oriente del país</h1>
-      <p class="lead"> se encuentran algunas de las mejores playas de Venezuela. Bahías de arena fina y cocoteros bellísimos, esto lo hacen una zona privilegiada</p>
-      <hr class="my-4">
-      <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-      <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+            <div class="jumbotron">
+              <h1 class="display-4">Venezuela tuya</h1>
+              <div class="card" style="width: 65rem;">
+                <img src="{{img.url}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  
+                </div>
+              </div>
+              <p class="lead"> En el Oriente se encuentran algunas de las mejores playas de Venezuela. Bahías de arena fina y cocoteros bellísimos, esto lo hacen una zona privilegiada</p>
+              <hr class="my-4">
+              <p>La región oriental de venezolana se caracteriza por ser una de las más privilegiadas del país, por sus hermosos paisajes y playas inigualables; también destacan sus bailes típicos y variedad cultural.
+              Fue una antigua división administrativa de los Estados Unidos de Venezuela ubicada al noreste del país, entre el mar Caribe al norte, el río Orinoco al sur, el Golfo de Paria y el Territorio Federal Delta Amacuro al este y los estados Guárico y Miranda al oeste.</p>
+              <a class="btn btn-primary btn-lg" href="{{ page.get_parent.url }}" role="button">Home</a>
+            </div>
+        </div>
+       
+      </div>
     </div>
-    <p>{{self.nombre_playa}}</p>
-
-    <div class="intro">{{ page.intro }}</div>
 
     {{ page.body|richtext }}
-
-    <p><a href="{{ page.get_parent.url }}">Return to blog</a></p>
     
 
 {% endblock %}
+

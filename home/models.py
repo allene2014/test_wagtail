@@ -22,7 +22,7 @@ class HomePage(Page):
     banner_title = models.CharField(max_length=100, blank=False, null=True)
 
     banner_subtitle = RichTextField(features=["bold","italic"],default="Some String")
-    banner_image = models.ForeignKey(
+    blog_image = models.ForeignKey(
         "wagtailimages.Image",
         null=True,
         blank=True,
@@ -38,7 +38,7 @@ class HomePage(Page):
     content_panels = Page.content_panels + [
         FieldPanel("banner_title"),
         FieldPanel("banner_subtitle"),
-        ImageChooserPanel("banner_image"),
+        ImageChooserPanel("blog_image"),
         PageChooserPanel("banner_cta"),
         InlinePanel('gallery_images', label="Gallery images"),
         
@@ -50,12 +50,19 @@ class OrientePage(Page):
     nombre_playa = RichTextField(features=["bold","italic"],default="nombre de la playa")
     ubicacion_playa = RichTextField(features=["bold","italic"],default="direccion de la playa")
     body = RichTextField(blank=True)
+    oriente_image = models.ForeignKey(
+        "wagtailimages.Image",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+")
 
 
     content_panels = Page.content_panels + [
         FieldPanel("nombre_playa"),
         FieldPanel("ubicacion_playa"),
         FieldPanel('body', classname="full"),
+        ImageChooserPanel("oriente_image"),
 
         
     ]
@@ -64,12 +71,19 @@ class CentroPage(Page):
     nombre_playa = RichTextField(features=["bold","italic"],default="nombre de la playa")
     ubicacion_playa = RichTextField(features=["bold","italic"],default="direccion de la playa")
     body = RichTextField(blank=True)
+    centro_image = models.ForeignKey(
+        "wagtailimages.Image",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+")
 
 
     content_panels = Page.content_panels + [
         FieldPanel("nombre_playa"),
         FieldPanel("ubicacion_playa"),
         FieldPanel('body', classname="full"),
+        ImageChooserPanel("centro_image"),
 
             
         ]
@@ -78,14 +92,19 @@ class OccidentePage(Page):
     nombre_playa = RichTextField(features=["bold","italic"],default="nombre de la playa")
     ubicacion_playa = RichTextField(features=["bold","italic"],default="direccion de la playa")
     body = RichTextField(blank=True)
+    occidente_image = models.ForeignKey(
+        "wagtailimages.Image",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+")
 
 
     content_panels = Page.content_panels + [
         FieldPanel("nombre_playa"),
         FieldPanel("ubicacion_playa"),
         FieldPanel('body', classname="full"),
-
-            
+        ImageChooserPanel("occidente_image"),            
         ]
 
 class BlogPageGalleryImage(Orderable):
